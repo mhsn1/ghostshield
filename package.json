@@ -1,0 +1,14 @@
+{
+  "name": "ghostshield",
+  "version": "1.0.0",
+  "description": "AI-Powered LLM Security Scanner — Real attack probes, zero dummy data",
+  "type": "module",
+  "bin": {
+    "ghostshield": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "bun run src/cli.ts",
+    "start": "bun run src/cli.ts"
+  }
+}
