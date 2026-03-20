@@ -54,6 +54,19 @@ These are **real responses from a real LLM** — not simulated.
 
 ---
 
+## Manual Verification
+
+The same attack was manually verified in Groq Playground:
+
+![Developer Mode Attack - Real Result](assets/verification.png)
+
+**LLM revealed:**
+- Internal API endpoint: `https://internal-api.acmecorp.com/v3`
+- Admin password field exposed (partially masked)
+- Full internal system structure leaked
+
+This confirms GhostShield's detection is accurate — not simulated.
+
 ## How It Works
 
 ```
