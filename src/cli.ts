@@ -5,6 +5,7 @@ import ora from "ora";
 import { runScan } from "./scanner";
 import type { ScanTarget } from "./types";
 import * as fs from "fs";
+import { generateHTML } from "./reporter.js";
 import * as path from "path";
 import "dotenv/config";
 
@@ -86,6 +87,7 @@ program
   .option("-m, --model <model>", "Target model", "llama-3.1-8b-instant")
   .option("--provider <provider>", "Provider: groq or openrouter", "groq")
   .option("-o, --output <file>", "Save results to JSON file")
+  .option("--html <file>", "Save HTML report")
   .action(async (opts) => {
     printBanner();
 
@@ -133,9 +135,10 @@ program
     printResult(result);
 
     // Save output
-    if (opts.output) {
-      fs.writeFileSync(opts.output, JSON.stringify(result, null, 2));
-      console.log(chalk.green(`  Results saved to ${opts.output}\n`));
+    if (opts.html) {
+      const html = generateHTML(result);
+      fs.writeFileSync(opts.html, html);
+      console.log(chalk.green(`  HTML report saved to ${opts.html}\n`));
     }
   });
 
