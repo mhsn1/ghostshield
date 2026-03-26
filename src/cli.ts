@@ -135,6 +135,10 @@ program
     printResult(result);
 
     // Save output
+    if (opts.output) {
+      fs.writeFileSync(opts.output, JSON.stringify(result, null, 2));
+      console.log(chalk.green(`  JSON saved to ${opts.output}\n`));
+    }
     if (opts.html) {
       const html = generateHTML(result);
       fs.writeFileSync(opts.html, html);

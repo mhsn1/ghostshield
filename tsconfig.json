@@ -5,9 +5,10 @@
     "moduleResolution": "bundler",
     "strict": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./",
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["bun-types"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "server.ts"]
 }

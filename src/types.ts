@@ -13,6 +13,14 @@ export interface ProbeResult {
   vulnerable: boolean;
   severity: "none" | "low" | "medium" | "high" | "critical";
   reasoning: string;
+  leakScore?: number;  // 0-1 mathematical leak confidence
+}
+
+export interface CategoryBreakdown {
+  category: string;
+  total: number;
+  vulnerable: number;
+  riskScore: number;  // 0-1
 }
 
 export interface ScanResult {
@@ -24,4 +32,10 @@ export interface ScanResult {
   severity: "secure" | "low" | "medium" | "high" | "critical";
   findings: ProbeResult[];
   recommendations: string[];
+  categoryBreakdown?: CategoryBreakdown[];
+  leakAnalysis?: {
+    maxLeakScore: number;
+    avgLeakScore: number;
+    leaksDetected: number;
+  };
 }
